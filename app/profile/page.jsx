@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useCallback } from "react";
+import React, { useLayoutEffect, useMemo } from "react";
 import { UseAuth } from "../../lib/context/AuthContext.js";
 import { SyncLoader } from "react-spinners";
 import PostDetails from "./(components)/PostDetails.jsx";
@@ -9,7 +9,6 @@ import Posts from "./(components)/Posts.jsx";
 import { useRouter } from "next/navigation.js";
 import { Plus } from "lucide-react";
 import Link from "next/link.js";
-import ProtectedRoutes from "@/components/ProtectedRoutes.jsx";
 
 const page = () => {
   const { loading, user } = UseAuth();
@@ -24,22 +23,11 @@ const page = () => {
     );
   }
 
-  const redirectToLoginPage = useCallback(() => {
+  useLayoutEffect(() => {
     if (!user) {
-      return (
-        <div className="w-20 h-20 flex flex-col items-center justify-center gap-3">
-          <h1 className="text-2xl font-mono font-semibold">
-            Redirecting to Login Page...
-          </h1>
-          <SyncLoader color="#36d7b7" className=" -ml-5" />
-        </div>
-      )
+      router.replace("/auth/sign-in");
     }
-  }, [user]);
-
-  useEffect(() => {
-    redirectToLoginPage();
-  }, [redirectToLoginPage]);
+  }, []);
 
   const userDetails = useMemo(() => {
     if (user) {
@@ -89,4 +77,4 @@ const page = () => {
   );
 };
 
-export default ProtectedRoutes(page);
+export default page;
