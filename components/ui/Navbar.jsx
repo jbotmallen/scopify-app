@@ -29,12 +29,20 @@ const Navbar = () => {
           <Link href="/about">About</Link>
         </li>
         {loading ? (
-          <BarLoader color="#36d7b7" width={32} height={4} className="px-5" />
+          <>
+            <BarLoader color="#36d7b7" width={32} height={4} className="px-5" />
+            <BarLoader color="#36d7b7" width={32} height={4} className="px-5" />
+          </>
         ) : (
           user && (
-            <li>
-              <Link href="/profile">Profile</Link>
-            </li>
+            <>
+              <li>
+                <Link href="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link href="/posts">Posts</Link>
+              </li>
+            </>
           )
         )}
       </ul>
@@ -66,7 +74,9 @@ const Navbar = () => {
                 />
                 <section className="h-full flex flex-col items-start justify-start">
                   <h1 className="text-sm text-left max-w-20 text-ellipsis overflow-hidden whitespace-nowrap">
-                    {user.displayName ? user.displayName.split(" ").slice(0, 2).join(" ") : user.email.split("a")[0]}
+                    {user.displayName
+                      ? user.displayName.split(" ").slice(0, 2).join(" ")
+                      : user.email.split("a")[0]}
                   </h1>
                   <h1 className="text-xs max-w-20 italic text-left text-ellipsis overflow-hidden whitespace-nowrap">
                     {user.email}

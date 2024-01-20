@@ -1,15 +1,11 @@
 import React from "react";
 import { IoColorPalette } from "react-icons/io5";
 
-const Banner = ({ user }) => {
+const Banner = ({ image }) => {
   return (
     <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-50 h-1/4 w-full relative border-y-2 border-gray-700 dark:border-gray-200">
       <img
-        src={
-          user && user.photoUrl
-            ? user.photoUrl
-            : "/blankpfp.png"
-        }
+        src={image}
         alt="avatar"
         className="rounded-full w-16 h-16 md:w-32 md:h-32 absolute -bottom-8 md:-bottom-12 left-[10%] border-4 border-gray-700 dark:border-gray-200"
       />
