@@ -1,33 +1,15 @@
 "use client";
 
-import React, { useLayoutEffect, useMemo } from "react";
-import { UseAuth } from "../../lib/context/AuthContext.js";
-import { SyncLoader } from "react-spinners";
+import React, { useMemo } from "react";
+import { UseAuth } from "../../../lib/context/AuthContext.js";
 import PostDetails from "./(components)/PostDetails.jsx";
 import Banner from "./(components)/Banner.jsx";
 import Posts from "./(components)/Posts.jsx";
-import { useRouter } from "next/navigation.js";
 import { Plus } from "lucide-react";
 import Link from "next/link.js";
 
 const page = () => {
-  const { loading, user } = UseAuth();
-  const router = useRouter();
-
-  if (!user && loading) {
-    return (
-      <div className="w-20 h-20 flex flex-col items-center justify-center gap-3">
-        <h1 className="text-2xl font-mono font-semibold">Loading...</h1>
-        <SyncLoader color="#36d7b7" className=" -ml-5" />
-      </div>
-    );
-  }
-
-  useLayoutEffect(() => {
-    if (!user) {
-      router.replace("/auth/sign-in");
-    }
-  }, []);
+  const { user } = UseAuth();
 
   const userDetails = useMemo(() => {
     if (user) {
@@ -40,6 +22,8 @@ const page = () => {
       };
     }
   }, [user]);
+
+  console.log(userDetails);
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-between bg-transparent">
@@ -77,4 +61,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default (page);

@@ -7,11 +7,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { LoadingBar } from "./Loading.jsx";
 
 const Navbar = () => {
   const { user, Logout, loading } = UseAuth();
 
-  const handeSignOut = async () => {
+  const handleSignOut = async () => {
     try {
       await Logout();
     } catch (error) {
@@ -29,10 +30,7 @@ const Navbar = () => {
           <Link href="/about">About</Link>
         </li>
         {loading ? (
-          <>
-            <BarLoader color="#36d7b7" width={32} height={4} className="px-5" />
-            <BarLoader color="#36d7b7" width={32} height={4} className="px-5" />
-          </>
+          <LoadingBar />
         ) : (
           user && (
             <>
@@ -90,7 +88,7 @@ const Navbar = () => {
               </Link>
               <a
                 className="p-1 text-red-400 cursor-pointer"
-                onClick={handeSignOut}
+                onClick={handleSignOut}
               >
                 SignOut
               </a>
