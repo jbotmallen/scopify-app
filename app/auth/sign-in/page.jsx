@@ -1,7 +1,10 @@
 "use client";
+import { Button } from "@/components/ui/button.jsx";
 import { UseAuth } from "../../../lib/context/AuthContext.js";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import Link from "next/link.js";
+import withAuth from "../withAuth.js";
 
 const page = () => {
   const [email, setEmail] = useState("");
@@ -77,12 +80,12 @@ const page = () => {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
+                  <Link
+                    href="/auth/reset"
                     className="font-semibold text-indigo-500 hover:text-indigo-500"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -100,21 +103,22 @@ const page = () => {
             </div>
             { authError !== "" && <p className="text-xs text-red-400 mt-3">{authError}</p>}
             <div>
-              <button
+              <Button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
+                variant="authentication"
+                className="w-full"              >
                 Sign in
-              </button>
+              </Button>
             </div>
           </form>
           <div className="mt-5">
-            <button
+            <Button
+              variant="default"
               onClick={handleGoogleSignIn}
-              className="flex w-full justify-center items-center gap-2 rounded-md bg-gray-50 dark:bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-gray-800 dark:text-gray-200 shadow-sm hover:bg-gray-300 dark:hover:bg-gray-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center items-center gap-2 font-semibold leading-6 shadow-sm"
             >
               <FcGoogle /> Google
-            </button>
+            </Button>
           </div>
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
@@ -131,4 +135,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(page);

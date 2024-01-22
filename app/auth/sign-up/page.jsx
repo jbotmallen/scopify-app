@@ -1,8 +1,10 @@
 "use client";
 
+import { Button } from "@/components/ui/button.jsx";
 import { UseAuth } from "../../../lib/context/AuthContext.js";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import withAuth from "../withAuth.js";
 
 const page = () => {
   const [email, setEmail] = useState("");
@@ -123,21 +125,19 @@ const page = () => {
               {error && <p className="text-xs text-red-400 mt-3">{error}</p>}
             </div>
             <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md hover:text-gray-200 dark:hover:text-gray-800 bg-indigo-400 dark:bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 hover:dark:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
+              <Button variant="authentication" type="submit" className="w-full">
                 Register
-              </button>
+              </Button>
             </div>
           </form>
           <div className="mt-5">
-            <button
+            <Button
+              variant="default"
               onClick={handleGoogleSignIn}
-              className="flex w-full justify-center items-center gap-2 rounded-md bg-gray-200 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center items-center gap-2 rounded-md px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm"
             >
               <FcGoogle /> Google
-            </button>
+            </Button>
           </div>
           <p className="mt-10 text-center text-sm">
             Already a member?{" "}
@@ -154,4 +154,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(page);

@@ -25,7 +25,7 @@ export default function layout({ children }) {
             </Link>{" "}
             to view this page
           </h1>
-          <Image src="/auth_img.png" alt="Image" width={200} height={150} />
+          <Image src="/auth_img.png" loading="lazy" alt="Image" width={200} height={150} />
         </div>
       </div>
     );
