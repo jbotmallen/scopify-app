@@ -23,8 +23,6 @@ const page = () => {
     }
   }, [user]);
 
-  console.log(userDetails);
-
   return (
     <div className="w-full h-screen flex flex-col items-center justify-between bg-transparent">
       <Banner
@@ -46,10 +44,10 @@ const page = () => {
               </h2>
             </div>
             <Link
-              href="/posts/add"
-              className="transition-all ease-in-out duration-300 rounded-lg flex justify-center items-center gap-1 bg-green-300 dark:bg-green-500 px-3 py-1 dark:text-gray-200 text-gray-900 hover:bg-green-500 hover:text-gray-200 hover:scale-105 hover:dark:bg-green-300 hover:dark:text-gray-900 border-2 border-green-300 dark:border-green-500"
+              href="/create"
+              className="h-4/5 text-sm transition-all ease-in-out duration-300 rounded-lg flex justify-center items-center gap-1 bg-green-300 dark:bg-green-500 px-3 dark:text-gray-200 text-gray-900 hover:bg-green-500 hover:text-gray-200 hover:scale-[1.03] hover:dark:bg-green-300 hover:dark:text-gray-900"
             >
-              <Plus size={14} className="block md:hidden" />
+              <Plus size={14} />
               <span className="hidden md:block">New Post</span>
             </Link>
           </span>
@@ -61,4 +59,4 @@ const page = () => {
   );
 };
 
-export default (page);
+export default page;

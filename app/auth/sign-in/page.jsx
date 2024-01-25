@@ -4,7 +4,7 @@ import { UseAuth } from "../../../lib/context/AuthContext.js";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link.js";
-import withAuth from "../withAuth.js";
+import withOutAuth from "../withOutAuth.js";
 
 const page = () => {
   const [email, setEmail] = useState("");
@@ -135,4 +135,4 @@ const page = () => {
   );
 };
 
-export default withAuth(page);
+export default withOutAuth(page);

@@ -8,19 +8,22 @@ import Link from "next/link";
 const PostDetails = () => {
   return (
     <section className="h-full w-1/4 bg-gray-100 rounded-lg shadow shadow-gray-950 dark:shadow-gray-400 dark:bg-gray-900 flex flex-col justify-between p-3 mt-14">
-      <span className="tracking-wide text-lg font-semibold h-2/5 flex flex-col justify-evenly p-2">
-        <h1 className="text-xl font-bold text-center h-1/3">Details</h1>
-        <span className="flex flex-col justify-around w-full h-2/3 items-start mx-auto">
-          <h2 className="text-xs tracking-wide text-red-400 flex items-center gap-1">
+      <span className="tracking-wide text-lg font-semibold h-2/5 flex flex-col justify-around p-2">
+        <h1 className="text-xl font-bold text-center h-1/6">Details</h1>
+        <span className="flex flex-col justify-around w-full h-1/3 items-start mx-auto">
+          <h2 className="text-xs md:text-sm tracking-wide text-red-400 flex items-center gap-1">
             <IoIosImage />
             32 Total Posts
           </h2>
-          <h2 className="text-xs tracking-wide text-blue-500 flex items-center gap-1">
+          <h2 className="text-xs md:text-sm tracking-wide text-blue-500 flex items-center gap-1">
             <FaUsers />
             556 Total Followers
           </h2>
         </span>
-        <Link href="/posts" className="h-1/5 p-1 w-full flex items-center gap-2 justify-center text-sm transition-all duration-300 bg-transparent dark:hover:bg-purple-300 hover:bg-purple-600 hover:text-gray-200 dark:hover:text-gray-900 rounded-lg">
+        <Link
+          href="/posts"
+          className="h-1/4 p-1 w-full flex items-center gap-2 justify-center text-sm transition-all duration-300 bg-transparent dark:hover:bg-purple-300 hover:bg-purple-600 hover:text-gray-200 dark:hover:text-gray-900 rounded-lg"
+        >
           <Pen size={12} /> More details...
         </Link>
       </span>

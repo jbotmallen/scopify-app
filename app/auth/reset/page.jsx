@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import withAuth from "../withAuth";
+import withOutAuth from "../withOutAuth";
 
 const page = () => {
   const [email, setEmail] = useState("");
@@ -69,4 +69,4 @@ const page = () => {
   );
 };
 
-export default withAuth(page);
+export default withOutAuth(page);

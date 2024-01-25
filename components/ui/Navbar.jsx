@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { UseAuth } from "../../lib/context/AuthContext.js";
-import BarLoader from "react-spinners/BarLoader.js";
 import {
   Popover,
   PopoverContent,
@@ -26,14 +25,24 @@ const Navbar = () => {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
         {loading ? (
-          <LoadingBar />
+          <>
+            <li>
+              <LoadingBar size={32} />
+            </li>
+            <li>
+              <LoadingBar size={32} />
+            </li>
+            <li>
+              <LoadingBar size={32} />
+            </li>
+          </>
         ) : (
           user && (
             <>
+              <li>
+                <Link href="/create">Create</Link>
+              </li>
               <li>
                 <Link href="/profile">Profile</Link>
               </li>
@@ -46,7 +55,10 @@ const Navbar = () => {
       </ul>
 
       {loading ? (
-        <BarLoader color="#36d7b7" width={32} height={4} className="mr-10" />
+        <div className="w-1/4 h-full flex items-center justify-end">
+          <LoadingBar />
+          <LoadingBar />
+        </div>
       ) : !user ? (
         <ul className="w-1/4 h-full flex items-center justify-end gap-5">
           <li>
