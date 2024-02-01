@@ -1,5 +1,5 @@
 "use client";
-import { LoadingDots } from "@/components/ui/Loading";
+import { LoadingDots } from "@/components/Loading";
 import { UseAuth } from "@/lib/context/AuthContext";
 import Image from "next/image";
 import Link from "next/link";

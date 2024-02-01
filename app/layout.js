@@ -1,10 +1,12 @@
 "use client";
 
 import "./globals.css";
-import Navbar from "../components/ui/Navbar";
+import Navbar from "../components/Navbar";
 import { AuthContextProvider, metadata } from "../lib/context/AuthContext.js";
 import { ThemeProvider } from "next-themes";
-import ThemeToggle from "../components/ui/ThemeToggle";
+import ThemeToggle from "../components/ThemeToggle";
+import { AlertContextProvider, useAlert } from "@/lib/context/AlertContext";
+import AlertComposition from "@/components/AlertComposition";
 
 export default function RootLayout({ children }) {
   return (
@@ -14,9 +16,12 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="transition-all duration-300 ease-in-out h-svh min-h-svh w-svw bg-transparent text-gray-800 dark:text-gray-200 flex flex-col items-center">
             <AuthContextProvider>
-              <Navbar />
-              {children}
-              <ThemeToggle />
+              <AlertContextProvider>
+                <Navbar />
+                {children}
+                <ThemeToggle />
+                <AlertComposition />
+              </AlertContextProvider>
             </AuthContextProvider>
           </main>
         </ThemeProvider>

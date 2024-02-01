@@ -1,7 +1,7 @@
 import React from "react";
 import { UseAuth } from "@/lib/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { LoadingDots } from "@/components/ui/Loading";
+import { LoadingDots } from "@/components/Loading";
 
 export default function withOutAuth(Component) {
   return function unAuthenticatedComponent(props) {

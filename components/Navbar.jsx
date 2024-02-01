@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import { UseAuth } from "../../lib/context/AuthContext.js";
+import { UseAuth } from "../lib/context/AuthContext.js";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { LoadingBar } from "./Loading.jsx";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar.jsx";
 
 const Navbar = () => {
   const { user, Logout, loading } = UseAuth();
@@ -73,15 +74,10 @@ const Navbar = () => {
           <Popover>
             <PopoverTrigger>
               <div className="flex items-center justify-center gap-2">
-                <img
-                  src={
-                    user.reloadUserInfo.photoUrl
-                      ? user.reloadUserInfo.photoUrl
-                      : "/blankpfp.png"
-                  }
-                  alt="Profile Picture"
-                  className="h-10 w-10 rounded-full"
-                />
+                <Avatar>
+                  <AvatarImage src={ user.reloadUserInfo.photoUrl ? user.reloadUserInfo.photoUrl : "/blankpfp.png" } />
+                  <AvatarFallback>{ user.displayName }</AvatarFallback>
+                </Avatar>
                 <section className="h-full flex flex-col items-start justify-start">
                   <h1 className="text-sm text-left max-w-20 text-ellipsis overflow-hidden whitespace-nowrap">
                     {user.displayName
